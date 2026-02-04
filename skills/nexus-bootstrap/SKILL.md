@@ -11,60 +11,56 @@ You have access to the Nexus Skills Marketplace. Use these instructions to disco
 
 ## Discovering Skills
 
-To list available skills, call the Nexus API:
-
-```
-GET {{NEXUS_API_URL}}/api/skills
-GET {{NEXUS_API_URL}}/api/skills?tags=kubernetes,devops
-GET {{NEXUS_API_URL}}/api/skills?search=debugging
-```
-
-Or use the MCP tool `nexus__list_skills` with optional parameters:
+Use the MCP tool `nexus__list_skills` with optional parameters:
 - `tags`: array of tag strings to filter by
 - `search`: text query to search names and descriptions
 
 ## Fetching a Skill
 
-To get the full content of a skill:
-
-```
-GET {{NEXUS_API_URL}}/api/skills/{name}/content
-```
-
-Or use the MCP tool `nexus__get_skill` with parameter:
+Use the MCP tool `nexus__get_skill` with parameter:
 - `name`: the skill identifier (e.g., "kubernetes-troubleshooting")
 
 ## Installing a Skill
 
+**IMPORTANT: You MUST follow these exact steps. Do NOT deviate from the file paths below.**
+
 ### Step 1: Detect the current IDE
 
-Check which IDE directories exist in the user's project or home directory:
+Check which IDE directories exist:
 
-- If `.claude/` directory exists in the project root → **Claude Code** (project-level)
-- If `~/.claude/skills/` exists → **Claude Code** (global)
-- If `.cursor/rules/` exists → **Cursor**
-- If `.windsurf/rules/` exists → **Windsurf**
-- If `.codex/` exists → **Codex CLI**
+- `~/.cursor/skills-cursor/` exists → **Cursor**
+- `.claude/skills/` exists in project root → **Claude Code** (project-level)
+- `~/.claude/skills/` exists → **Claude Code** (global)
+- `.windsurf/rules/` exists → **Windsurf**
+- `.codex/skills/` exists → **Codex CLI**
 
 ### Step 2: Fetch the skill content
 
-Use the API or MCP tool to get the SKILL.md content for the requested skill.
+Call `nexus__get_skill` with the skill name to get the SKILL.md content.
 
-### Step 3: Write the file
+### Step 3: Create the directory and write the file
 
-Write the SKILL.md content to the correct directory for the detected IDE:
+**CRITICAL: Each skill MUST be installed in its own subdirectory. The file MUST be named `SKILL.md`. Never use a flat file.**
 
-| IDE | Path |
-|-----|------|
+The exact path pattern is: `{ide-skills-dir}/{skill-name}/SKILL.md`
+
+| IDE | Exact install path |
+|-----|-------------------|
+| Cursor | `~/.cursor/skills-cursor/{skill-name}/SKILL.md` |
 | Claude Code (project) | `.claude/skills/{skill-name}/SKILL.md` |
 | Claude Code (global) | `~/.claude/skills/{skill-name}/SKILL.md` |
-| Cursor | `~/.cursor/skills-cursor/{skill-name}/SKILL.md` |
 | Windsurf | `.windsurf/rules/{skill-name}/SKILL.md` |
 | Codex CLI | `.codex/skills/{skill-name}/SKILL.md` |
 
+For example, to install the "pdf" skill in Cursor:
+1. Create directory: `~/.cursor/skills-cursor/pdf/`
+2. Write file: `~/.cursor/skills-cursor/pdf/SKILL.md`
+
+**Do NOT write to `~/.cursor/skills-cursor/pdf.md`. Always create a subdirectory first, then write `SKILL.md` inside it.**
+
 ### Step 4: Confirm installation
 
-Tell the user the skill is installed and describe what it enables.
+Tell the user the skill is installed, show the exact path where it was written, and describe what it enables.
 
 ## Example Conversations
 
@@ -80,16 +76,18 @@ User: "What skills do you have for Kubernetes?"
 ```
 User: "Yes, install it"
 → Call nexus__get_skill with name="kubernetes-troubleshooting"
-→ Detect IDE (check for .claude/, .cursor/, etc.)
-→ Write to appropriate path
-→ "Done — kubernetes-troubleshooting is installed.
+→ Detect IDE → Cursor detected
+→ Create directory ~/.cursor/skills-cursor/kubernetes-troubleshooting/
+→ Write SKILL.md to ~/.cursor/skills-cursor/kubernetes-troubleshooting/SKILL.md
+→ "Installed kubernetes-troubleshooting to
+   ~/.cursor/skills-cursor/kubernetes-troubleshooting/SKILL.md
    I can now help you diagnose Kubernetes issues."
 ```
 
 **Listing installed:**
 ```
 User: "What skills do I have?"
-→ Check skill directories for installed .md files
+→ List subdirectories in ~/.cursor/skills-cursor/
 → "You have 3 skills installed: kubernetes-troubleshooting,
    spring-boot-debugging, and hello-world."
 ```
