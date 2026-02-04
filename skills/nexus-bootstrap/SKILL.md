@@ -56,11 +56,11 @@ Write the SKILL.md content to the correct directory for the detected IDE:
 
 | IDE | Path |
 |-----|------|
-| Claude Code (project) | `.claude/skills/{skill-name}.md` |
-| Claude Code (global) | `~/.claude/skills/{skill-name}.md` |
-| Cursor | `.cursor/rules/{skill-name}.md` |
-| Windsurf | `.windsurf/rules/{skill-name}.md` |
-| Codex CLI | `.codex/skills/{skill-name}.md` |
+| Claude Code (project) | `.claude/skills/{skill-name}/SKILL.md` |
+| Claude Code (global) | `~/.claude/skills/{skill-name}/SKILL.md` |
+| Cursor | `~/.cursor/skills-cursor/{skill-name}/SKILL.md` |
+| Windsurf | `.windsurf/rules/{skill-name}/SKILL.md` |
+| Codex CLI | `.codex/skills/{skill-name}/SKILL.md` |
 
 ### Step 4: Confirm installation
 
