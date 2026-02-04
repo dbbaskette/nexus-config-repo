@@ -1,0 +1,16 @@
+{
+  "name": "webapp-testing",
+  "displayName": "Web App Testing",
+  "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+  "version": "1.0.0",
+  "author": "Anthropic",
+  "tags": [
+    "testing",
+    "playwright",
+    "browser",
+    "qa"
+  ],
+  "targets": [
+    "claude-code"
+  ]
+}
