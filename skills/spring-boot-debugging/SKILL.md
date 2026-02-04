@@ -1,3 +1,8 @@
+---
+name: spring-boot-debugging
+description: Debug Spring Boot applications — diagnose startup failures, bean wiring issues, configuration problems, and runtime errors.
+---
+
 # Spring Boot Debugging
 
 ## Overview

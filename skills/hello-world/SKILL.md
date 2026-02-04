@@ -1,3 +1,8 @@
+---
+name: hello-world
+description: A minimal test skill that confirms the Nexus Skills pipeline works end-to-end.
+---
+
 # Hello World Skill
 
 When the user says "hello skill", respond with:

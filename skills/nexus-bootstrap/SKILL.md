@@ -1,3 +1,8 @@
+---
+name: nexus-bootstrap
+description: Enables your AI agent to discover and install skills from the Nexus Skills Marketplace. Install this skill first to unlock self-service skill management.
+---
+
 # Nexus Skills Manager
 
 ## Overview

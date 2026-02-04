@@ -1,3 +1,8 @@
+---
+name: kubernetes-troubleshooting
+description: Diagnose and fix common Kubernetes issues including pod failures, networking problems, and resource constraints.
+---
+
 # Kubernetes Troubleshooting
 
 ## Overview
