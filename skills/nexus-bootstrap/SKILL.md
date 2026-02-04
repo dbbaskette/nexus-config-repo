@@ -33,7 +33,7 @@ Use the MCP tool `nexus__get_skill` with parameter:
 
 Check which IDE directories exist:
 
-- `~/.cursor/skills-cursor/` exists → **Cursor**
+- `~/.cursor/skills/` exists → **Cursor**
 - `.claude/skills/` exists in project root → **Claude Code** (project-level)
 - `~/.claude/skills/` exists → **Claude Code** (global)
 - `.windsurf/rules/` exists → **Windsurf**
@@ -51,17 +51,17 @@ The exact path pattern is: `{ide-skills-dir}/{skill-name}/SKILL.md`
 
 | IDE | Exact install path |
 |-----|-------------------|
-| Cursor | `~/.cursor/skills-cursor/{skill-name}/SKILL.md` |
+| Cursor | `~/.cursor/skills/{skill-name}/SKILL.md` |
 | Claude Code (project) | `.claude/skills/{skill-name}/SKILL.md` |
 | Claude Code (global) | `~/.claude/skills/{skill-name}/SKILL.md` |
 | Windsurf | `.windsurf/rules/{skill-name}/SKILL.md` |
 | Codex CLI | `.codex/skills/{skill-name}/SKILL.md` |
 
 For example, to install the "pdf" skill in Cursor:
-1. Create directory: `~/.cursor/skills-cursor/pdf/`
-2. Write file: `~/.cursor/skills-cursor/pdf/SKILL.md`
+1. Create directory: `~/.cursor/skills/pdf/`
+2. Write file: `~/.cursor/skills/pdf/SKILL.md`
 
-**Do NOT write to `~/.cursor/skills-cursor/pdf.md`. Always create a subdirectory first, then write `SKILL.md` inside it.**
+**Do NOT write to `~/.cursor/skills/pdf.md`. Always create a subdirectory first, then write `SKILL.md` inside it.**
 
 ### Step 4: Confirm installation
 
@@ -82,17 +82,17 @@ User: "What skills do you have for Kubernetes?"
 User: "Yes, install it"
 → Call nexus__get_skill with name="kubernetes-troubleshooting"
 → Detect IDE → Cursor detected
-→ Create directory ~/.cursor/skills-cursor/kubernetes-troubleshooting/
-→ Write SKILL.md to ~/.cursor/skills-cursor/kubernetes-troubleshooting/SKILL.md
+→ Create directory ~/.cursor/skills/kubernetes-troubleshooting/
+→ Write SKILL.md to ~/.cursor/skills/kubernetes-troubleshooting/SKILL.md
 → "Installed kubernetes-troubleshooting to
-   ~/.cursor/skills-cursor/kubernetes-troubleshooting/SKILL.md
+   ~/.cursor/skills/kubernetes-troubleshooting/SKILL.md
    I can now help you diagnose Kubernetes issues."
 ```
 
 **Listing installed:**
 ```
 User: "What skills do I have?"
-→ List subdirectories in ~/.cursor/skills-cursor/
+→ List subdirectories in ~/.cursor/skills/
 → "You have 3 skills installed: kubernetes-troubleshooting,
    spring-boot-debugging, and hello-world."
 ```
