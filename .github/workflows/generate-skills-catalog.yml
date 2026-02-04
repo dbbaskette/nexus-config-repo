@@ -1,0 +1,60 @@
+name: Generate Skills Catalog
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/*/manifest.json'
+      - 'skills/*/SKILL.md'
+  workflow_dispatch:
+
+jobs:
+  generate-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate skills/catalog.json
+        run: |
+          python3 << 'SCRIPT'
+          import json, os, glob
+
+          catalog = []
+          skills_dir = 'skills'
+
+          for manifest_path in sorted(glob.glob(f'{skills_dir}/*/manifest.json')):
+              skill_dir = os.path.dirname(manifest_path)
+              skill_name = os.path.basename(skill_dir)
+              skill_md_path = os.path.join(skill_dir, 'SKILL.md')
+
+              if not os.path.exists(skill_md_path):
+                  print(f'Warning: {skill_name} missing SKILL.md, skipping')
+                  continue
+
+              with open(manifest_path) as f:
+                  manifest = json.load(f)
+
+              with open(skill_md_path) as f:
+                  content = f.read()
+
+              manifest['content'] = content
+              catalog.append(manifest)
+
+          with open(f'{skills_dir}/catalog.json', 'w') as f:
+              json.dump(catalog, f, indent=2)
+              f.write('\n')
+
+          print(f'Generated catalog with {len(catalog)} skills')
+          SCRIPT
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skills/catalog.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: auto-generate skills catalog"
+            git push
+          else
+            echo "No changes to catalog"
+          fi
