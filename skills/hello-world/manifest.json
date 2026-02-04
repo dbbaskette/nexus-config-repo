@@ -1,0 +1,9 @@
+{
+  "name": "hello-world",
+  "displayName": "Hello World",
+  "description": "A minimal test skill that confirms the Nexus Skills pipeline works end-to-end.",
+  "version": "1.0.0",
+  "author": "nexus-team",
+  "tags": ["test", "demo"],
+  "targets": ["claude-code", "cursor", "windsurf", "codex"]
+}

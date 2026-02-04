@@ -1,0 +1,10 @@
+{
+  "name": "kubernetes-troubleshooting",
+  "displayName": "Kubernetes Troubleshooting",
+  "description": "Diagnose and fix common Kubernetes issues including pod failures, networking problems, and resource constraints.",
+  "version": "1.0.0",
+  "author": "nexus-team",
+  "tags": ["kubernetes", "devops", "debugging", "containers"],
+  "targets": ["claude-code", "cursor", "windsurf", "codex"],
+  "requiredTools": ["kubectl"]
+}

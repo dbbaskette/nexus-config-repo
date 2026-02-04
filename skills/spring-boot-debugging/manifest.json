@@ -1,0 +1,10 @@
+{
+  "name": "spring-boot-debugging",
+  "displayName": "Spring Boot Debugging",
+  "description": "Debug Spring Boot applications — diagnose startup failures, bean wiring issues, configuration problems, and runtime errors.",
+  "version": "1.0.0",
+  "author": "nexus-team",
+  "tags": ["spring-boot", "java", "debugging", "backend"],
+  "targets": ["claude-code", "cursor", "windsurf", "codex"],
+  "requiredTools": ["java", "mvn"]
+}

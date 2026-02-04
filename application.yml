@@ -1,0 +1,5 @@
+# Nexus configuration served by Spring Cloud Config Server
+# Skills marketplace configuration will be added here
+nexus:
+  skills:
+    enabled: true

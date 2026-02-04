@@ -1,0 +1,9 @@
+{
+  "name": "nexus-bootstrap",
+  "displayName": "Nexus Skills Manager",
+  "description": "Enables your AI agent to discover and install skills from the Nexus Skills Marketplace. Install this skill first to unlock self-service skill management.",
+  "version": "1.0.0",
+  "author": "nexus-team",
+  "tags": ["nexus", "bootstrap", "skills", "marketplace"],
+  "targets": ["claude-code", "cursor", "windsurf", "codex"]
+}
